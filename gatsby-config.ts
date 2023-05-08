@@ -18,7 +18,15 @@ const config: GatsbyConfig = {
                 "path": "./src/pages/"
             },
             __key: "pages"
-        }]
+        },
+        `gatsby-transformer-json`,
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: `./data/`,
+            },
+        },
+    ]
 };
 
 export default config;
