@@ -32,13 +32,7 @@ export default function MobileHome({foods}: { foods: Foods }) {
             />
             <MobilePanel isOpen={leftFloatingPanelOpened} onClick={setLeftFloatingPanelOpened}/>
 
-            {foods.map(food => <Card footer="Source: USDA">
-                {food.name}
-                <br/>
-                Belongs to {food.category}
-            </Card>)}
-
-
+            {foods.map(food => <Card outline header={food.name} footer={food.category}/>)}
 
 
             <Tabbar

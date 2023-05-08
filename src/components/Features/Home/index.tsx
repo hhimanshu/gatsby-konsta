@@ -17,7 +17,6 @@ export default function Home() {
       }
     }
 `)
-    console.log(data)
     const foods: Foods = data.allFoundationFoodNutritionFactsJson.nodes.map((node: any) => ({
         name: node.hap_name,
         category: node.category
