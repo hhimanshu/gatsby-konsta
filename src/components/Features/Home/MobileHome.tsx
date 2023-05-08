@@ -14,6 +14,7 @@ import {
 } from 'konsta/react';
 import {MdClose, MdDensityMedium, MdEmail, MdFileUpload, MdSpaceDashboard, MdToday} from "react-icons/md";
 import React, {useState} from "react";
+import {MobilePanel} from "../../Mobile/MobilePanel";
 
 export default function MobileHome() {
     const [leftFloatingPanelOpened, setLeftFloatingPanelOpened] = useState<boolean>(false);
@@ -21,47 +22,15 @@ export default function MobileHome() {
 
     return (
         <Page>
-            <Navbar title="MB" centerTitle left={<Link navbar iconOnly>
+            <Navbar title="Popular foods" centerTitle left={<Link navbar iconOnly>
                 <Icon
                     material={<MdDensityMedium onClick={() => setLeftFloatingPanelOpened(true)}/>}
                 />
 
-            </Link>}/>
-            <Panel
-                side="left"
-                opened={leftFloatingPanelOpened}
-                onBackdropClick={() => setLeftFloatingPanelOpened(false)}
-            >
-                <Page>
-                    <Navbar
-                        title="Left Panel"
-                        right={
-                            <Link navbar
-                                  iconOnly
+            </Link>}
+            />
+            <MobilePanel isOpen={leftFloatingPanelOpened} onClick={setLeftFloatingPanelOpened}/>
 
-                                  onClick={() => setLeftFloatingPanelOpened(false)}
-                            >
-                                <Icon material={<MdClose/>}/>
-                            </Link>
-                        }
-                    />
-                    <Block className="space-y-4">
-                        <p>Here comes left panel.</p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Suspendisse faucibus mauris leo, eu bibendum neque congue non. Ut
-                            leo mauris, eleifend eu commodo a, egestas ac urna. Maecenas in
-                            lacus faucibus, viverra ipsum pulvinar, molestie arcu. Etiam
-                            lacinia venenatis dignissim. Suspendisse non nisl semper tellus
-                            malesuada suscipit eu et eros. Nulla eu enim quis quam elementum
-                            vulputate. Mauris ornare consequat nunc viverra pellentesque.
-                            Aenean semper eu massa sit amet aliquam. Integer et neque sed
-                            libero mollis elementum at vitae ligula. Vestibulum pharetra sed
-                            libero sed porttitor. Suspendisse a faucibus lectus.
-                        </p>
-                    </Block>
-                </Page>
-            </Panel>
             <Block strong>
                 <p>
                     {"Here is your Next.js & Konsta UI app. Let's see what we have here."}
@@ -108,6 +77,5 @@ export default function MobileHome() {
                 />
             </Tabbar>
         </Page>
-    )
-        ;
+    );
 }
