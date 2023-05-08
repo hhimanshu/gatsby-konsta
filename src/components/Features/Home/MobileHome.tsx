@@ -2,21 +2,22 @@ import {
     Block,
     BlockTitle,
     Button,
-    List,
+    Card,
+    Icon,
     Link,
+    List,
     ListItem,
     Navbar,
     Page,
-    Icon,
-    Panel,
-    Toolbar,
-    Tabbar, TabbarLink,
+    Tabbar,
+    TabbarLink,
 } from 'konsta/react';
-import {MdClose, MdDensityMedium, MdEmail, MdFileUpload, MdSpaceDashboard, MdToday} from "react-icons/md";
+import {MdDensityMedium, MdEmail, MdFileUpload} from "react-icons/md";
 import React, {useState} from "react";
 import {MobilePanel} from "../../Mobile/MobilePanel";
+import {Foods} from "../../../lib/types";
 
-export default function MobileHome() {
+export default function MobileHome({foods}: { foods: Foods }) {
     const [leftFloatingPanelOpened, setLeftFloatingPanelOpened] = useState<boolean>(false);
     const [activeTab, setActiveTab] = useState('tab-1');
 
@@ -31,21 +32,15 @@ export default function MobileHome() {
             />
             <MobilePanel isOpen={leftFloatingPanelOpened} onClick={setLeftFloatingPanelOpened}/>
 
-            <Block strong>
-                <p>
-                    {"Here is your Next.js & Konsta UI app. Let's see what we have here."}
-                </p>
-            </Block>
-            <BlockTitle>Navigation</BlockTitle>
-            <List>
-                <ListItem href="/about/" title="About"/>
-                <ListItem href="/form/" title="Form"/>
-            </List>
+            {foods.map(food => <Card footer="Source: USDA">
+                {food.name}
+                <br/>
+                Belongs to {food.category}
+            </Card>)}
 
-            <Block strong className="flex space-x-4">
-                <Button>Button 1</Button>
-                <Button>Button 2</Button>
-            </Block>
+
+
+
             <Tabbar
                 labels
                 icons
