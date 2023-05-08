@@ -1,18 +1,5 @@
-import {
-    Block,
-    BlockTitle,
-    Button,
-    Card,
-    Icon,
-    Link,
-    List,
-    ListItem,
-    Navbar,
-    Page,
-    Tabbar,
-    TabbarLink,
-} from 'konsta/react';
-import {MdDensityMedium, MdEmail, MdFileUpload} from "react-icons/md";
+import {Card, Icon, Link, Navbar, Page, Tabbar, TabbarLink,} from 'konsta/react';
+import {MdDensityMedium, MdEmojiFoodBeverage, MdOutlineFavorite} from "react-icons/md";
 import React, {useState} from "react";
 import {MobilePanel} from "../../Mobile/MobilePanel";
 import {Foods} from "../../../lib/types";
@@ -32,8 +19,10 @@ export default function MobileHome({foods}: { foods: Foods }) {
             />
             <MobilePanel isOpen={leftFloatingPanelOpened} onClick={setLeftFloatingPanelOpened}/>
 
-            {foods.map(food => <Card outline header={food.name} footer={food.category}/>)}
-
+            {foods.map(food => <Card outline>
+                <p className={`text-md font-medium py-2`}>{food.name}</p>
+                <p className="text-xs font-normal text-slate-500 uppercase">{food.category}</p>
+            </Card>)}
 
             <Tabbar
                 labels
@@ -48,10 +37,10 @@ export default function MobileHome({foods}: { foods: Foods }) {
                     icon={
 
                         <Icon
-                            material={<MdEmail className="w-6 h-6"/>}
+                            material={<MdEmojiFoodBeverage className="w-6 h-6"/>}
                         />
                     }
-                    label={'Overview'}
+                    label={'Foods'}
                 />
                 <TabbarLink
                     active={activeTab === 'tab-3'}
@@ -59,10 +48,10 @@ export default function MobileHome({foods}: { foods: Foods }) {
                     icon={
 
                         <Icon
-                            material={<MdFileUpload className="w-6 h-6"/>}
+                            material={<MdOutlineFavorite className="w-6 h-6"/>}
                         />
                     }
-                    label={'Transactions'}
+                    label={'Nutrition'}
                 />
             </Tabbar>
         </Page>
